@@ -12,41 +12,59 @@
             background-color: #1e1e1e;
             color: white;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .card {
             background: #2c4b6e;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
             display: inline-block;
-            margin: 20px;
-            width: 280px;
+            margin: 10px;
+            width: 250px;
+            max-width: 100%;
             position: relative;
+            box-sizing: border-box;
         }
         .indicator {
-            font-size: 20px;
+            font-size: 14px;
         }
         .green { color: #00cc00; }
         .red { color: #EC1E3D; }
         .sparkline-container {
             width: 100%;
-            height: 50px;
+            height: 40px;
+            max-height: 40px;
             position: relative;
         }
         canvas {
             width: 100% !important;
-            height: 50px !important;
+            height: 100% !important;
         }
         .value_and_indicator {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 5px;
         }
         .caret-icon {
-            font-size: 30px;
+            font-size: 16px;
         }
         .bottom-container {
-            margin-top: 15px;
+            margin-top: 8px;
+        }
+        select {
+            font-size: 12px;
+            padding: 5px;
+        }
+        h2 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .main-value {
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -54,7 +72,7 @@
     <div id="text2" class="card">
         <h2>Pemakaian kWh</h2>
         <div class="value_and_indicator">
-            <p id="pemkWh_value" style="font-size:25px; font-weight:bold;"></p>
+            <p id="pemkWh_value" class="main-value"></p>
             <i id="caret_icon" class="fa-solid caret-icon"></i>
         </div>
         <div class="sparkline-container">
@@ -62,10 +80,10 @@
         </div>
         <p id="pemkWh_difference" class="indicator"></p>
         <p id="pemkWh_pct_change" class="indicator"></p>
-        <p>vs bulan sebelumnya</p>
+        <p style="font-size: 12px;">vs bulan sebelumnya</p>
         
         <div class="bottom-container">
-            <label for="select_month">Pilih Bulan:</label>
+            <label for="select_month" style="font-size: 12px;">Pilih Bulan:</label>
             <select id="select_month" onchange="updateDashboard()">
                 <option value="JAN">Januari</option>
                 <option value="FEB">Februari</option>
@@ -115,7 +133,7 @@
             
             let labels = data.map(d => d.Bulan);
             let values = data.map(d => d["Pemakaian kWh"]);
-            let pointRadius = labels.map(bulan => bulan === selectedMonth ? 5 : 0);
+            let pointRadius = labels.map(bulan => bulan === selectedMonth ? 3 : 0);
             let pointBackgroundColor = labels.map(bulan => bulan === selectedMonth ? "white" : "transparent");
             
             window.sparklineChart = new Chart(ctx, {
@@ -144,12 +162,6 @@
         }
         
         updateDashboard();
-
-        window.addEventListener("resize", () => {
-            if (window.sparklineChart) {
-                window.sparklineChart.resize();
-            }
-        });
     </script>
 </body>
 </html>
