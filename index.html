@@ -71,6 +71,11 @@
             font-size: 18px;
             font-weight: bold;
         }
+        .difference-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
     </style>
 </head>
 <body>
@@ -83,8 +88,10 @@
         <div class="sparkline-container">
             <canvas id="sparkline"></canvas>
         </div>
-        <p id="pemkWh_difference" class="indicator"></p>
-        <p id="pemkWh_pct_change" class="indicator"></p>
+        <div class="difference-container">
+            <p id="pemkWh_difference" class="indicator"></p>
+            <p id="pemkWh_pct_change" class="indicator"></p>
+        </div>
         <p style="font-size: 12px;">vs bulan sebelumnya</p>
         
         <div class="bottom-container">
