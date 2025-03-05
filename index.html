@@ -51,7 +51,6 @@
     </style>
 </head>
 <body>
-    
     <div id="text2" class="card">
         <h2>Pemakaian kWh</h2>
         <div class="value_and_indicator">
@@ -142,18 +141,15 @@
                     plugins: { legend: { display: false } }
                 }
             });
-
-            let caretIcon = document.getElementById("caret_icon");
-            if (pemkWh_difference > 0) {
-                caretIcon.className = "fa-solid fa-caret-up green caret-icon";
-            } else if (pemkWh_difference < 0) {
-                caretIcon.className = "fa-solid fa-caret-down red caret-icon";
-            } else {
-                caretIcon.className = "fa-solid caret-icon";
-            }
         }
         
         updateDashboard();
+
+        window.addEventListener("resize", () => {
+            if (window.sparklineChart) {
+                window.sparklineChart.resize();
+            }
+        });
     </script>
 </body>
 </html>
