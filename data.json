@@ -1,0 +1,14 @@
+[
+    { "Bulan": "JAN", "Pemakaian kWh": 5000, "Pemakaian_kWh_Difference": 0, "Pemakaian_kWh_pct_Difference": 0.0 },
+    { "Bulan": "FEB", "Pemakaian kWh": 5200, "Pemakaian_kWh_Difference": 200, "Pemakaian_kWh_pct_Difference": 4.0 },
+    { "Bulan": "MAR", "Pemakaian kWh": 4800, "Pemakaian_kWh_Difference": -400, "Pemakaian_kWh_pct_Difference": -7.7 },
+    { "Bulan": "APR", "Pemakaian kWh": 5300, "Pemakaian_kWh_Difference": 500, "Pemakaian_kWh_pct_Difference": 10.4 },
+    { "Bulan": "MEI", "Pemakaian kWh": 5500, "Pemakaian_kWh_Difference": 200, "Pemakaian_kWh_pct_Difference": 3.8 },
+    { "Bulan": "JUN", "Pemakaian kWh": 5400, "Pemakaian_kWh_Difference": -100, "Pemakaian_kWh_pct_Difference": -1.8 },
+    { "Bulan": "JUL", "Pemakaian kWh": 5600, "Pemakaian_kWh_Difference": 200, "Pemakaian_kWh_pct_Difference": 3.7 },
+    { "Bulan": "AGU", "Pemakaian kWh": 5800, "Pemakaian_kWh_Difference": 200, "Pemakaian_kWh_pct_Difference": 3.6 },
+    { "Bulan": "SEP", "Pemakaian kWh": 6000, "Pemakaian_kWh_Difference": 200, "Pemakaian_kWh_pct_Difference": 3.4 },
+    { "Bulan": "OKT", "Pemakaian kWh": 6200, "Pemakaian_kWh_Difference": 200, "Pemakaian_kWh_pct_Difference": 3.3 },
+    { "Bulan": "NOV", "Pemakaian kWh": 6400, "Pemakaian_kWh_Difference": 200, "Pemakaian_kWh_pct_Difference": 3.2 },
+    { "Bulan": "DES", "Pemakaian kWh": 6600, "Pemakaian_kWh_Difference": 200, "Pemakaian_kWh_pct_Difference": 3.1 }
+]
