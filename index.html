@@ -25,10 +25,11 @@
             border-radius: none;
             display: inline-block;
             width: auto;
-            min-width: 200px;
+            min-width: 150px;
             max-width: 300px;
             height: auto;
             min-height: 300px;
+            min-height: 500px;
             position: relative;
             box-sizing: border-box;
             box-shadow: none;
@@ -164,7 +165,7 @@
             let pemkWh_difference = monthData["Pemakaian_kWh_Difference"];
             let pemkWh_pct_change = monthData["Pemakaian_kWh_pct_Difference"];
             
-            document.getElementById("pemkWh_value").textContent = pemkWh.toLocaleString();
+            document.getElementById("pemkWh_value").textContent = pemkWh.toLocaleString() + ' GWh';
             document.getElementById("pemkWh_difference").textContent = 
                 (pemkWh_difference > 0 ? '+' : '') + pemkWh_difference.toLocaleString();
             document.getElementById("pemkWh_pct_change").textContent = 
