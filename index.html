@@ -172,11 +172,11 @@
             let pemkWh_difference = monthData["Pemakaian_kWh_Difference"];
             let pemkWh_pct_change = monthData["Pemakaian_kWh_pct_Difference"];
             
-            document.getElementById("pemkWh_value").textContent = pemkWh.toLocaleString() + ' GWh';
+            document.getElementById("pemkWh_value").textContent = pemkWh.toLocaleString('id-ID') + ' GWh';
             document.getElementById("pemkWh_difference").textContent = 
-                (pemkWh_difference > 0 ? '+' : '') + pemkWh_difference.toLocaleString();
+                (pemkWh_difference > 0 ? '+' : '') + pemkWh_difference.toLocaleString('id-ID');
             document.getElementById("pemkWh_pct_change").textContent = 
-                (pemkWh_pct_change > 0 ? '+' : '') + pemkWh_pct_change.toFixed(1) + '%';
+                (pemkWh_pct_change > 0 ? '+' : '') + pemkWh_pct_change.toLocaleString('id-ID', {minimumFractionDigits:1, maximumFractionDigits:1}) + '%';
             
             let colorClass = pemkWh_difference > 0 ? 'green' : (pemkWh_difference < 0 ? 'red' : '');
             document.getElementById("pemkWh_difference").className = "indicator " + colorClass;
