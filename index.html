@@ -139,38 +139,40 @@
         <div class="bottom-container">
             <label for="select_month" style="font-size: 12px;">Pilih Bulan:</label>
             <select id="select_month" onchange="updateDashboard()">
-                <option value="JAN">Januari</option>
-                <option value="FEB">Februari</option>
-                <option value="MAR">Maret</option>
-                <option value="APR">April</option>
-                <option value="MEI">Mei</option>
-                <option value="JUN">Juni</option>
-                <option value="JUL">Juli</option>
-                <option value="AGU">Agustus</option>
-                <option value="SEP">September</option>
-                <option value="OKT">Oktober</option>
-                <option value="NOV">November</option>
-                <option value="DES">Desember</option>
+                <option value="2024-01">2024-01</option>
+                <option value="2024-02">2024-02</option>
+                <option value="2024-03">2024-03</option>
+                <option value="2024-04">2024-04</option>
+                <option value="2024-05">2024-05</option>
+                <option value="2024-06">2024-06</option>
+                <option value="2024-07">2024-07</option>
+                <option value="2024-08">2024-08</option>
+                <option value="2024-09">2024-09</option>
+                <option value="2024-10">2024-10</option>
+                <option value="2024-11">2024-11</option>
+                <option value="2024-12">2024-12</option>
             </select>
         </div>
     </div>
 
     <script>
         async function fetchData() {
-            const response = await fetch('data.json');
+            const response = await fetch('data_komplit_sar_2024.json');
             return await response.json();
         }
         
         async function updateDashboard() {
             let data = await fetchData();
+            let selectedUnit = 'UIDRKR'
+            let unitData = data.filter(item => item.UNIT === selectedUnit)
             let selectedMonth = document.getElementById("select_month").value;
-            let monthData = data.find(item => item.Bulan === selectedMonth);
+            let monthData = unitData.find(item => item.BULAN === selectedMonth);
 
             if (!monthData) return;
 
-            let pemkWh = monthData["Pemakaian kWh"];
-            let pemkWh_difference = monthData["Pemakaian_kWh_Difference"];
-            let pemkWh_pct_change = monthData["Pemakaian_kWh_pct_Difference"];
+            let pemkWh = monthData["Real Bulanan"];
+            let pemkWh_difference = monthData["Selisih Real Bulanan"];
+            let pemkWh_pct_change = monthData["Persen"];
             
             document.getElementById("pemkWh_value").textContent = pemkWh.toLocaleString('id-ID') + ' GWh';
             document.getElementById("pemkWh_difference").textContent = 
@@ -185,8 +187,14 @@
             let ctx = document.getElementById('sparkline').getContext('2d');
             if (window.sparklineChart) window.sparklineChart.destroy();
             
-            let labels = data.map(d => d.Bulan);
-            let values = data.map(d => d["Pemakaian kWh"]);
+            let labels = unitData.map(d => d.BULAN);
+            let values = unitData.map(d => d["Real Bulanan"]);
+            console.log(values)
+
+            if (!labels.length || !values.length) {
+                console.error("Data untuk sparkline kosong.");
+                return;
+            }
             let pointRadius = labels.map(bulan => bulan === selectedMonth ? 3 : 0);
             let pointBackgroundColor = labels.map(bulan => bulan === selectedMonth ? "white" : "transparent");
             
